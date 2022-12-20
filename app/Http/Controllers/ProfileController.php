@@ -6,6 +6,7 @@ use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use ProtoneMedia\Splade\Facades\Toast;
 
 class ProfileController extends Controller
 {
@@ -38,6 +39,7 @@ class ProfileController extends Controller
 
         $request->user()->save();
 
+        Toast::title('Your profile was updated!');
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
 
